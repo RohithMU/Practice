@@ -1,8 +1,6 @@
 package Stepdefination;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
 import Elements.Elements;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -27,7 +25,7 @@ public class Stepdefination extends Elements
 	@When("^User enters valid (.*) and (.*)$")
 	public void user_enters_valid_rohithpatilmu_gmail_com_and_rohithmu(String username, String password) 
 	{
-		dfind(Login_In);
+	    dfind(Login_In);
 	    dfind(Email,username);
 	    dfind(Password,password);
 	}
@@ -36,7 +34,6 @@ public class Stepdefination extends Elements
 	{
 	    
 	}
-
 	@Then("User is able to navigate homepage")
 	public void user_is_able_to_navigate_homepage() 
 	{
