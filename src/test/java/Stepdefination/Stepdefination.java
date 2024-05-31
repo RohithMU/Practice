@@ -1,8 +1,7 @@
 package Stepdefination;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import Elements.Elements;
 import io.cucumber.java.en.And;
@@ -12,24 +11,26 @@ import io.cucumber.java.en.When;
 
 public class Stepdefination extends Elements
 {
-	public Stepdefination(WebDriver driver) {
+	static WebDriver driver;
+	public Stepdefination() 
+	{
 		super(driver);
 	}
 
 	@Given("User is on login page")
 	public void user_is_on_login_page() 
 	{
-	    System.getProperty("webdriver.chrome.driver", "C:/Users/HP/eclipse-workspace/Cucumberjava/src/test/resources/drivers");
+	    System.getProperty("webdriver.chrome.driver", "C:/Users/rohit/Downloads/chrome-win64/chrome-win64/chrome.exe");
 	    driver = new ChromeDriver();
-	    dfind(Email);
+	    driver.navigate().to("https://demowebshop.tricentis.com/");
 	}
-
-	@When("User enters valid rohithpatilmu@gmail.com and Rohithmu@{int}")
-	public void user_enters_valid_rohithpatilmu_gmail_com_and_rohithmu(Integer int1) 
+	@When("^User enters valid (.*) and (.*)$")
+	public void user_enters_valid_rohithpatilmu_gmail_com_and_rohithmu(String username, String password) 
 	{
-	    
+		dfind(Login_In);
+	    dfind(Email,username);
+	    dfind(Password,password);
 	}
-
 	@And("User clicks on login button")
 	public void user_clicks_on_login_button() 
 	{
